@@ -4,6 +4,8 @@ const {
     PlantPartial,
     validate
 } = require('../pkg/plant/validate');
+const jwt = require('jsonwebtoken');
+const config = require('../pkg/config');
 
 const getAll = async (req, res) => {
     try {
