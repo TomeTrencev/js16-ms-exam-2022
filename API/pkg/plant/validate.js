@@ -2,8 +2,8 @@ const { Validator } = require('node-input-validator');
 
 const Plant = {
     name: 'required|string',
-    likes_sun: 'required|number',
-    likes_water: 'required|number',
+    likes_sun: 'required|integer',
+    likes_water: 'required|integer',
     has_flower: 'required|boolean',
     has_thorns: 'required|boolean',
     found_on_continent: 'required|array',

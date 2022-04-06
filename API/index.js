@@ -13,9 +13,7 @@ api.use(jwt({
     algorithms: ['HS256']
 }).unless({
     path: [
-        '/api/plant',
-        '/api/plant/:id',
-        '/api/plant'
+       
     ]
 }));
 
@@ -25,6 +23,12 @@ api.post('/api/plant', auth.create);
 api.put('/api/plant/:id', auth.update);
 api.patch('/api/plant/:id', auth.updatePartial);
 api.delete('/api/plant/:id', auth.remove);
+
+api.use(function (err, req, res, next) {
+    if (err.name === 'UnauthorizedError') {
+        res.status(401).send('invalid token...');
+    }
+});
 
 api.listen(config.get('service').port, err => {
     if (err) return console.log(err);
